@@ -16,8 +16,13 @@ public class StockServiceGrpcImpl extends StockServiceGrpc.StockServiceImplBase 
 
   @Override
   public void getStock(GetStockRequest request, StreamObserver<GetStockResponse> responseObserver) {
-    responseObserver.onNext(
-        GetStockResponse.newBuilder().setStock(stockDAO.getStock(request.getProductId())).build());
-    responseObserver.onCompleted();
+    try {
+      responseObserver.onNext(
+          GetStockResponse.newBuilder().setStock(stockDAO.getStock(request.getProductId()))
+              .build());
+      responseObserver.onCompleted();
+    } catch (Exception ex) {
+      System.out.println(ex);
+    }
   }
 }
