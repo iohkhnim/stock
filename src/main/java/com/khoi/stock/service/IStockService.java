@@ -1,5 +1,7 @@
 package com.khoi.stock.service;
 
-public class IStockService {
+import com.khoi.basecrud.service.IBaseService;
+
+public class IStockService  {
 
 }
