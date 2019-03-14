@@ -18,4 +18,27 @@ public class StockDAOImpl extends BaseDAOImpl<Stock, Integer> implements IStockD
     query.setParameter("prodid", product_id);
     return Integer.parseInt(query.setMaxResults(1).getSingleResult().toString());
   }
+
+  @Override
+  public int getBestStock(int product_id, int amount) {
+    String hql = "SELECT obj.id FROM Stock obj WHERE obj.product_id = :prodid "
+        + "AND obj.stock >= :amount ORDER BY obj.stock DESC";
+    Query query = entityManager.createQuery(hql);
+    query.setParameter("amount", amount);
+    query.setParameter("prodid", product_id);
+    return Integer.parseInt(query.setMaxResults(1).getSingleResult().toString());
+  }
+
+  @Override
+  public int subtract(int id, int amount)  {
+    try {
+      Stock stock = findByid(id);
+      stock.setStock(stock.getStock() - amount);
+      update(stock);
+      return id;
+    } catch (Exception ex){
+      System.out.println(ex);
+      return -1;
+    }
+  }
 }
