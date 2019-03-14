@@ -26,7 +26,11 @@ public class StockDAOImpl extends BaseDAOImpl<Stock, Integer> implements IStockD
     Query query = entityManager.createQuery(hql);
     query.setParameter("amount", amount);
     query.setParameter("prodid", product_id);
-    return Integer.parseInt(query.setMaxResults(1).getSingleResult().toString());
+    try {
+      return Integer.parseInt(query.setMaxResults(1).getSingleResult().toString());
+    } catch (Exception ex) {
+      return -1;
+    }
   }
 
   @Override
