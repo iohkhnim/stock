@@ -53,6 +53,7 @@ public class StockServiceGrpcImpl extends StockServiceGrpc.StockServiceImplBase 
   public void getSupplierIdByStockId(GetSupplierIdByStockIdRequest request,
       StreamObserver<GetSupplierIdByStockIdResponse> streamObserver) {
     streamObserver.onNext(GetSupplierIdByStockIdResponse.newBuilder()
-        .setSupplierId(stockDAO.getSupplierIdByStockId(request.getStockId())).buildPartial());
+        .setSupplierId(stockDAO.getSupplierIdByStockId(request.getStockId())).build());
+    streamObserver.onCompleted();
   }
 }
