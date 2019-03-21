@@ -5,6 +5,8 @@ import com.khoi.stockproto.GetBestStockRequest;
 import com.khoi.stockproto.GetBestStockResponse;
 import com.khoi.stockproto.GetStockRequest;
 import com.khoi.stockproto.GetStockResponse;
+import com.khoi.stockproto.GetSupplierIdByStockIdRequest;
+import com.khoi.stockproto.GetSupplierIdByStockIdResponse;
 import com.khoi.stockproto.StockServiceGrpc;
 import com.khoi.stockproto.SubtractRequest;
 import com.khoi.stockproto.SubtractResponse;
@@ -47,4 +49,10 @@ public class StockServiceGrpcImpl extends StockServiceGrpc.StockServiceImplBase 
     responseObserver.onCompleted();
   }
 
+  @Override
+  public void getSupplierIdByStockId(GetSupplierIdByStockIdRequest request,
+      StreamObserver<GetSupplierIdByStockIdResponse> streamObserver) {
+    streamObserver.onNext(GetSupplierIdByStockIdResponse.newBuilder()
+        .setSupplierId(stockDAO.getSupplierIdByStockId(request.getStockId())).buildPartial());
+  }
 }

@@ -10,4 +10,6 @@ public interface IStockDAO extends IBaseDAO<Stock, Integer> {
   int getBestStock(int product_id, int amount);
 
   int subtract(int id, int amount);
+
+  int getSupplierIdByStockId(int stock_id);
 }

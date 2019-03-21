@@ -34,15 +34,23 @@ public class StockDAOImpl extends BaseDAOImpl<Stock, Integer> implements IStockD
   }
 
   @Override
-  public int subtract(int id, int amount)  {
+  public int subtract(int id, int amount) {
     try {
       Stock stock = findByid(id);
       stock.setStock(stock.getStock() - amount);
       update(stock);
       return id;
-    } catch (Exception ex){
+    } catch (Exception ex) {
       System.out.println(ex);
       return -1;
     }
+  }
+
+  @Override
+  public int getSupplierIdByStockId(int stock_id) {
+    String hql = "SELECT obj.supplier_id FROM Stock obj WHERE obj.id = :stock_id";
+    Query query = entityManager.createQuery(hql);
+    query.setParameter("stock_id", stock_id);
+    return Integer.parseInt(query.getResultList().get(0).toString());
   }
 }
