@@ -18,6 +18,11 @@ public class StockController {
   @Autowired
   private IStockService stockService;
 
+  /**
+   * <p>An API endpoint (/stock/create) with method POST creates a stock</p>
+   * @param stock Stock information
+   * @return Https status according to result
+   */
   @PostMapping("create")
   public ResponseEntity<Void> create(@RequestBody Stock stock) {
     Boolean flag = stockService.create(stock);
@@ -28,6 +33,11 @@ public class StockController {
     }
   }
 
+  /**
+   * <p>An API endpoint (/stock/update) with method PUT updates a stock</p>
+   * @param stock stock information
+   * @return Https status according to result
+   */
   @PutMapping("update")
   public ResponseEntity<Void> update(@RequestBody Stock stock) {
     Boolean flag = stockService.update(stock);

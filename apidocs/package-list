@@ -1,0 +1,7 @@
+com.khoi.stock
+com.khoi.stock.controller
+com.khoi.stock.dao
+com.khoi.stock.dao.dao.impl
+com.khoi.stock.dto
+com.khoi.stock.service
+com.khoi.stock.service.service.impl

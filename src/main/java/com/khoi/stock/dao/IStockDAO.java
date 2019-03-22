@@ -5,7 +5,7 @@ import com.khoi.stock.dto.Stock;
 
 public interface IStockDAO extends IBaseDAO<Stock, Integer> {
 
-  int getStock(int product_id);
+  int getStockByProductId(int product_id);
 
   int getBestStock(int product_id, int amount);
 
