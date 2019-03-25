@@ -12,9 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class StockDAOImpl extends BaseDAOImpl<Stock, Integer> implements IStockDAO {
 
   /**
-   * <p>This method retrieves stock from database of given product ID</p>
-   * @param product_id Product ID needs to be retrieved stock
-   * @return Return stock number of given product ID
+   * {@inheritDoc}
    */
   @Override
   public int getStockByProductId(int product_id) {
@@ -25,10 +23,7 @@ public class StockDAOImpl extends BaseDAOImpl<Stock, Integer> implements IStockD
   }
 
   /**
-   * <p>This method gets stock ID that has the largest amount of given product</p>
-   * @param product_id product ID needs to be retrieved stock ID
-   * @param amount Amount of bought product
-   * @return Return stock ID or -1 if not enough stock
+   * {@inheritDoc}
    */
   @Override
   public int getBestStock(int product_id, int amount) {
@@ -45,10 +40,7 @@ public class StockDAOImpl extends BaseDAOImpl<Stock, Integer> implements IStockD
   }
 
   /**
-   * <p>This method subtracts stock that has given stock ID</p>
-   * @param id Stock ID needs to be subtracted
-   * @param amount Number subtract
-   * @return Return a boolean value according to result
+   * {@inheritDoc}
    */
   @Override
   public int subtract(int id, int amount) {
@@ -64,9 +56,7 @@ public class StockDAOImpl extends BaseDAOImpl<Stock, Integer> implements IStockD
   }
 
   /**
-   * <p>This method retrieves supplier ID has given stock ID</p>
-   * @param stock_id stock ID needs to be retrived its supplier ID
-   * @return Return supplier ID of given stocj ID
+   * {@inheritDoc}
    */
   @Override
   public int getSupplierIdByStockId(int stock_id) {
