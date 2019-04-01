@@ -1,4 +1,4 @@
-package com.khoi.stock;
+package com.khoi.stock.config;
 
 import io.grpc.ServerBuilder;
 import io.grpc.netty.GrpcSslContexts;

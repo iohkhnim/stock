@@ -1,5 +1,7 @@
 package com.khoi.stock.service.service.impl;
 
+import com.google.rpc.Code;
+import com.google.rpc.Status;
 import com.khoi.stock.dao.IStockDAO;
 import com.khoi.stockproto.GetBestStockRequest;
 import com.khoi.stockproto.GetBestStockResponse;
@@ -10,6 +12,7 @@ import com.khoi.stockproto.GetSupplierIdByStockIdResponse;
 import com.khoi.stockproto.StockServiceGrpc;
 import com.khoi.stockproto.SubtractRequest;
 import com.khoi.stockproto.SubtractResponse;
+import io.grpc.protobuf.StatusProto;
 import io.grpc.stub.StreamObserver;
 import org.lognet.springboot.grpc.GRpcService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +39,9 @@ public class StockServiceGrpcImpl extends StockServiceGrpc.StockServiceImplBase 
               .build());
       responseObserver.onCompleted();
     } catch (Exception ex) {
-      System.out.println(ex);
+      Status status = Status.newBuilder().setCode(Code.NOT_FOUND_VALUE)
+          .setMessage("No such item").build();
+      responseObserver.onError(StatusProto.toStatusRuntimeException(status));
     }
   }
 
