@@ -1,4 +1,4 @@
-package com.khoi.stock;
+/*package com.khoi.stock;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,3 +14,4 @@ public class StockApplicationTests {
   }
 
 }
+*/
