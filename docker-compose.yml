@@ -5,6 +5,6 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "8085:8080"
+      - "8090:8080"
     network_mode: bridge
 
