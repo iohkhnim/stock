@@ -35,4 +35,6 @@ public interface IStockDAO extends IBaseDAO<Stock, Integer> {
    * @return Return supplier ID of given stocj ID
    */
   int getSupplierIdByStockId(int stock_id);
+
+  Boolean addStock(int stock_id, int stock);
 }

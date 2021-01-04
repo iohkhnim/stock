@@ -25,8 +25,8 @@ public class StockController {
    */
   @PostMapping("create")
   public ResponseEntity<Void> create(@RequestBody Stock stock) {
-    Boolean flag = stockService.create(stock);
-    if (flag.equals(true)) {
+    int id = stockService.create(stock);
+    if (id > 0) {
       return new ResponseEntity<Void>(HttpStatus.CREATED);
     } else {
       return new ResponseEntity<Void>(HttpStatus.CONFLICT);
